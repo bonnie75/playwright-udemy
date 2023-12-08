@@ -7,6 +7,7 @@ class HomePage {
   homeLink: Locator;
   searchIcon: Locator;
   navLinks: Locator;
+  coursesBtn: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ class HomePage {
     this.homeLink = page.locator('#menu-item-489:has-text("Home")')
     this.searchIcon = page.locator('//*[@id="zak-masthead"]/div/div/div/div[2]/div[1]/div[1]/a')
     this.navLinks = page.locator('#primary-menu li[id*=menu]')
+    this.coursesBtn = page.locator('#zak-masthead > div > div > div > div.zak-header-col.zak-header-col--2 > div.zak-header-buttons.zak-header-buttons--desktop > div > a')
   }
 
   async navigate() {

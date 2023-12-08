@@ -2,6 +2,9 @@ import { Locator, Page } from '@playwright/test';
 
 class ContactPage {
   private page: Page;
+  letstalkTxt: Locator;
+  callusLnk: Locator;
+  sendmessageTxt: Locator;
   nameInput: Locator;
   emailInput: Locator;
   phoneInput: Locator;
@@ -11,6 +14,9 @@ class ContactPage {
 
   constructor(page: Page) {
     this.page = page;
+    this.letstalkTxt = page.locator('text=talk')
+    this.callusLnk = page.locator('//*[@id="primary"]/div/section[2]/div/div/div/div[2]/div/div/a')
+    this.sendmessageTxt = page.locator('text=Send Us Message')
     this.nameInput = page.locator('.contact-name input')
     this.emailInput = page.locator('.contact-email input')
     this.phoneInput = page.locator('.contact-phone input')

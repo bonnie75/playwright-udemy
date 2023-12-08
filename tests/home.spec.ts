@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import HomePage from '../pages/home.page';
+import { isContext } from 'vm';
 
 test.describe('Home', () => {
     let homePage: HomePage;
@@ -51,7 +52,18 @@ test.describe('Home', () => {
         // verify home text is enabled
         await expect(homeText).toBeEnabled();
     })
+
+    test('Courses button is available and opens new window', async ( { context }) => {
+        
+        // click the courses button
+        const [newTab] = await Promise.all([context.waitForEvent('page'), homePage.coursesBtn.click()]);
+        
+        // verify button is clickable and new page opens
+        await expect(newTab.getByText('Academy Courses')).toBeVisible();     
+    })
+
 })
+
 
 function async(arg0: { page: any; }): (args: import("@playwright/test").PlaywrightTestArgs & import("@playwright/test").PlaywrightTestOptions & import("@playwright/test").PlaywrightWorkerArgs & import("@playwright/test").PlaywrightWorkerOptions, testInfo: import("@playwright/test").TestInfo) => any {
     throw new Error('Function not implemented.');
