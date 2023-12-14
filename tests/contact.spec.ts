@@ -25,7 +25,7 @@ test.describe('Contact', () => {
     await expect(letstalkTxt).toBeVisible();
   })
 
-  test('Call us now button is visible and clickale', async({ page }) => {
+  test('Call us now button is visible and clickable', async({ page }) => {
     // click the button
     await contactPage.callusLnk.click();
 

@@ -53,13 +53,15 @@ test.describe('Home', () => {
         await expect(homeText).toBeEnabled();
     })
 
-    test('Courses button is available and opens new window', async ( { context }) => {
+    test('Courses button is available and opens new window', async ( { page }) => {
         
         // click the courses button
-        const [newTab] = await Promise.all([context.waitForEvent('page'), homePage.coursesBtn.click()]);
+        const [newTab] = await Promise.all([page.waitForEvent('popup'), homePage.coursesBtn.click()]);
         
         // verify button is clickable and new page opens
-        await expect(newTab.getByText('Academy Courses')).toBeVisible();     
+        await newTab.waitForLoadState();
+       
+        await expect(newTab.getByText('Academy Courses')).toBeVisible();    
     })
 
 })
